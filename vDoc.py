@@ -1,13 +1,6 @@
 from __future__ import print_function
 import sys
-import time
 import random
-
-try:
-    import requests
-except ImportError:
-    print('\n\033[93m[!] Requests library not found, please install before proceeding.\n\n \033[0m')
-    sys.exit(1)
 
 def banner():
     banner = """
@@ -23,7 +16,7 @@ __   _|  _ \  ___   ___
 def check_args():
     if len(sys.argv) != 1:
         print("Invalid number of arguments entered!")
-        how_to_use = "python3 DockerAtEase.py"
+        how_to_use = "python3 vDoc.py"
         print('Use as:', how_to_use)
         sys.exit(1)
 
@@ -32,7 +25,7 @@ def main():
     check_args()
     while True:
         menu = """\033[93m
-             Enter an option or a file path (enter quit or q to exit)\n
+             Enter an option (enter quit or 0 to exit)\n
              enter 1 for creating two dokcer with my last name \n
              enter 2 for eastablish an interactive shell access to each container \n
              enter 3 for ping between container \n
@@ -55,7 +48,6 @@ def main():
             print("hi1")
         elif file == '3':
             print("hi1")
-            # replace rails with other user if applicable
         elif file == '4':
             print("hi1")
         elif file == '5':
