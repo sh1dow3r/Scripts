@@ -134,11 +134,9 @@ def main():
             #name2 = "Almair_22"
             name1 = input("type a contanier name: ")
             name2 = input("type a contanier name: ")
-            cont1, cont2 = createD(name1,name2)
-            cont1Attr = cont1.attrs
-            cont2Attr = cont2.attrs
-            print("Container Id is:"+ str(cont1Attr["Id"]), "Container Name is: "+str(cont1Attr["Name"]))
-            print("Container Id is:"+ str(cont2Attr["Id"]), "Container Name is: "+str(cont2Attr["Name"]))
+            createD(name1,name2)
+            #print("Container Id is:"+ str(cont1Attr["Id"]), "Container Name is: "+str(cont1Attr["Name"]))
+            #print("Container Id is:"+ str(cont2Attr["Id"]), "Container Name is: "+str(cont2Attr["Name"]))
         elif file == '2':
             myShell(cont1)
         elif file == '3':
