@@ -50,10 +50,18 @@ def ping_hosts(cont1, cont2):
     new_network="docker network create hunter2" #my network name is hunter2
     connect1="docker network connect hunter2 {}".format(cont1) #connecting the first container to hunter2 netwrok
     connect2="docker network connect hunter2 {}".format(cont2) #connecting the second container to hunter2 network
+    update1="docker exec -ti {} apt update ".format(cont1) #incase ping binary does not exist
+    update2="docker exec -ti {} apt update".format(cont2) #incase ping binary does not exist
+    install_ping1="docker exec -ti {} apt install -y iputils-ping ".format(cont1)
+    install_ping2="docker exec -ti {} apt install -y iputils-ping ".format(cont2)
     magic_ping="docker exec -it {} ping {}".formant(cont1,cont2)
     sub.call(new_network,shell=True)
     sub.call(connect1, shell=True)
     sub.call(connect2,shell=True)
+    sub.call(update1,shell=True)
+    sub.call(update2,shell=True)
+    sub.call(install_ping1,shell=True)
+    sub.call(install_ping2,shell=True)
     sub.call(magic_ping,shell=True)
 
 def inspect(cont1):
@@ -82,7 +90,7 @@ def remove_host(cont1):
     sub.call(cont,shell=True)
 
 def running_host():
-    cont = "docker run -it -d --name {} ubuntu:latest bash".format(cont1)
+    cont = "docker ps -a"
     sub.call(cont,shell=True)
 
 
@@ -134,24 +142,30 @@ def main():
             #name2 = "Almair_22"
             cont1 = input("type a contanier name: ")
             cont2 = input("type a contanier name: ")
-            createD(name1,name2)
+            createD(cont1,cont2)
             #print("Container Id is:"+ str(cont1Attr["Id"]), "Container Name is: "+str(cont1Attr["Name"]))
             #print("Container Id is:"+ str(cont2Attr["Id"]), "Container Name is: "+str(cont2Attr["Name"]))
         elif file == '2':
+            cont1 = input("Which container? [ex. name of the container] ")
             myShell(cont1)
         elif file == '3':
-            ping_host(cont1, cont2)
+            ping_hosts(cont1, cont2)
         elif file == '4':
+            cont1 = input("Which container? [ex. name of the container] ")
             inspect(cont1)
         elif file == '5':
+            cont1 = input("Which container? [ex. name of the container] ")
             networkType(cont1)
         elif file == '6':
             running_host()
         elif file == '7':
+            cont1 = input("Which container? [ex. name of the container] ")
             start_host(cont1)
         elif file == '8':
+            cont1 = input("Which container? [ex. name of the container] ")
             stop_host(cont1)
         elif file == '9':
+            cont1 = input("Which container? [ex. name of the container] ")
             remove_host(cont1)
 
 
