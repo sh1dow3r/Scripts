@@ -105,8 +105,8 @@ def check_args():
         sys.exit(1)
 
 def main():
-    cont1 = None
-    cont2 = None
+    cont1 = ""
+    cont2 = ""
     banner()
     check_args()
     while True:
@@ -132,8 +132,8 @@ def main():
         if file == '1':
             #name1 = "Alamri_11"
             #name2 = "Almair_22"
-            name1 = input("type a contanier name: ")
-            name2 = input("type a contanier name: ")
+            cont1 = input("type a contanier name: ")
+            cont2 = input("type a contanier name: ")
             createD(name1,name2)
             #print("Container Id is:"+ str(cont1Attr["Id"]), "Container Name is: "+str(cont1Attr["Name"]))
             #print("Container Id is:"+ str(cont2Attr["Id"]), "Container Name is: "+str(cont2Attr["Name"]))
