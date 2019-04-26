@@ -44,6 +44,7 @@ def ping_hosts(net, cont1, cont2):
     new_network1="docker network create {}".format(netName) #my network name is hunter2
     connect1="docker network connect {} {}".format(netName, cont1) #connecting the first container to hunter2 netwrok
     connect2="docker network connect {} {}".format(netName, cont2) #connecting the first container to hunter2 netwrok
+    print("ping binary does not exist; don't worry we'll install for you ;)")
     update1="docker exec -ti {} apt update ".format(cont1) #incase ping binary does not exist
     update2="docker exec -ti {} apt update".format(cont2) #incase ping binary does not exist
     install_ping1="docker exec -ti {} apt install -y iputils-ping ".format(cont1)
@@ -81,27 +82,53 @@ def inspect(cont1):
     sub.call(cont,shell=True)
 
 def networkType(cont1):
-    cont="docker inspect {} -f {{json .NetworkSettings.Networks }}".format(cont1)
+    """
+    This function check the and inspect the container given and check the netwrok config and print it back to the screen
+    param:
+        cont: the container to be inspect
+    """
+    cont="docker inspect -f "+"'"+"{{json .NetworkSettings.Networks }}"+"'"+ " {} ".format(cont1)
     sub.call(cont,shell=True)
 
 def start_host(cont1):
+    """
+    This function start the containter
+    param:
+        the container to start
+    """
     cont = "docker start {}".format(cont1)
     sub.call(cont,shell=True)
 
 def stop_host(cont1):
+    """
+    This function stop the container
+    parama:
+        the container to stop
+    """
     cont = "docker stop {}".format(cont1)
     sub.call(cont,shell=True)
 
 def remove_host(cont1):
+    """
+    This functino remove the container
+    param:
+        the container to be removed
+    """
     cont = "docker rm {}".format(cont1)
     sub.call(cont,shell=True)
 
 def running_host():
+    """
+    This function shows the running containers with theire usage
+    """
     cont = "docker ps -a --size"
     sub.call(cont,shell=True)
 
 
 def banner():
+    """
+    This function prints a fancy banner for ma fancy tool
+    """
     banner = """
                    ____
             __   _|  _ \  ___   ___
@@ -113,6 +140,9 @@ def banner():
     print(banner)
 
 def check_args():
+    """
+    This function checks and verify arguments length
+    """
     if len(sys.argv) != 1:
         print("Invalid number of arguments entered!")
         how_to_use = "python3 vDoc.py"
@@ -120,6 +150,9 @@ def check_args():
         sys.exit(1)
 
 def main():
+    """
+    Main function fist prints the banner then print the menue then waits for an input to process
+    """
     cont1 = ""
     cont2 = ""
     banner()
