@@ -24,6 +24,25 @@ optional arguments:
   -y, --yes      does not prompt the user for confirming the fix
   -n             show but not run the command to fix the ftp anonymous login
 #>
+
+<#$appCmd = "C:\windows\system32\inetsrv\appcmd.exe"
+& $appCmd --% set config /section:anonymousAuthentication /enabled:false
+
+function help{
+       Write-Host("help")
+}
+function main
+{
+param(
+       [Parameter(Mandatory=$true, Position=0, )] $ftpServer,
+       $help,
+       $verbose,
+       $fix,
+       $y,
+       $n
+)
+}
+#>
 function Verb-Noun
 {
     [CmdletBinding(DefaultParameterSetName='Parameter Set 1', 

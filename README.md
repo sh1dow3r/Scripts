@@ -1,21 +1,21 @@
 # Random Scripts
-These are random scripts that don't need to be there own repo. 
+Random small scripts. 
 ---
 ## Files
-### <span>DockerScript.py</span>
+### DockerScript.py
 A script for setting up 
+
 ### anonSaver.ps1 && anonSaver.py
-Anon server 
+anonSaver.ps1: mini HIDS tool checks for anonymous ftp and disables it on Windows 
+anonSaver.py:  mini HIDS tool checks for anonymous ftp and disables it on Linux 
 
-### <span>covert_communication.py</span> &&  <span>covert_channel.py</span>
-Covert communication using 
+### covert_communication.py 
+Covert communication: communcation between two processes using features of *nix file system
+
 ### vDoc2.py && vDoc.py
-docker autumation tool 
-### ftpHIDS.py
-ftp 
-
+ this scripts provide an easy use of docker managment and gives the functionality of create, run, ping, interactive shell, stop and remove contaiers through a menue
 ### script1.ps1
 todo.
 
-### <span>hyperV.ps1</span>
-A script for hyberv
+### hyperV.ps1</
+script for hyberv

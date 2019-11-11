@@ -27,6 +27,13 @@ def removedir(path):
     else:
         print("successfully removed dir "+path)
 
+def reader():
+    cmd = "ls -l /tmp/file* | cut -d " " -f 3"
+    lst = os.system(cmd)
+    message = ""
+    for i in lst:
+        message = message+chr(i)
+        print(message) #It should pring HELLO
 
 def main():
     message = "HELLO"
@@ -47,3 +54,5 @@ def main():
     #sleep(20)
     #removedir(path)
 main()
+
+
