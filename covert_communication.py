@@ -1,4 +1,17 @@
 #!/usr/bin/python3
+"""
+take advantage of the number that show up in the second field when you do "ls -al" in /tmp directory.. 
+For example if you want to send hello as a message for the receiver, you would create a "file1" 
+and depending on the ASCII character number of the first letter you want to send, you will create that much soft links 
+to the hard file and so on. For "H" it will create a file1 "1 being the first letter" and it will create 
+a 72(The ACSII for the letter "H") soft links to that file and put it in dir1 "just to make less messy" 
+after that it will create a second file called file2 "2 being the second letter" and it will create 
+a 69 (The ACSII for the letter "E") and so on until it creates the full message which was "HELLO" 
+
+After that, that, the receiver would scan the tmp  directory looks for how many symbolic links in there then 
+make a list of the files of its symlink and convert the number of each file to an ASCII equivalent of the corresponding number.
+"""
+
 import os
 from pathlib import Path
 
